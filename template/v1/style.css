@@ -15,8 +15,7 @@
 
      box-sizing: border-box;
 
-     font-family: 'Playfair Display', serif;
-
+     font-family: 'Source Serif Pro', serif;
  }
 
 
@@ -79,11 +78,11 @@
 
  .name-block {
 
-     font-size: 2.5rem;
+     font-size: 2.75rem;
 
      line-height: 1.1;
 
-     font-weight: 700;
+     font-weight: 600;
 
      text-transform: capitalize;
 
@@ -98,7 +97,8 @@
 
  .handle {
 
-     font-size: 2.2rem;
+     font-size: 2.5rem;
+     font-weight: 400;
 
      text-align: end;
 
@@ -124,10 +124,13 @@
 
      align-items: center;
 
+     gap: 20px;
+
      flex-grow: 1;
      /* Allows this section to take up available middle space */
 
      justify-content: center;
+    
 
  }
 
@@ -145,7 +148,7 @@
      border: 5px solid var(--white);
 
      background-color: #eee;
-     /* Fallback color */
+     
 
  }
 
@@ -154,9 +157,11 @@
 
      margin-top: 15px;
 
-     font-size: 50px;
+     font-family: "Open Sans";
 
-     font-weight: 400;
+     font-size: 2.5rem;
+
+     font-weight: 300;
 
  }
 
@@ -176,11 +181,12 @@
 
      display: flex;
 
-     align-items: center;
+     align-items: flex-start;
 
      gap: 8px;
 
-     font-size: 2.25rem;
+     font-size: 2.5rem;
+     font-weight: 200;
 
  }
 
