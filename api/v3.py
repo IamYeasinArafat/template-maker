@@ -28,6 +28,15 @@ def get_base64_image(image_path: Path) -> str:
     with open(image_path, "rb") as f:
         return base64.b64encode(f.read()).decode("utf-8")
 
+def adjust_handle(handle: str) -> str:
+    """Ensures the handle starts with '@' for consistent display."""
+    return handle if handle.startswith("@") else f"@{handle}"
+
+
+def adjust_params(params: QueryParams) -> QueryParams:
+    """Applies necessary adjustments to the input parameters."""
+    params.handle = adjust_handle(params.handle)
+    return params
 
 @router.post("/generate-profile")
 async def generate_profile(
@@ -37,6 +46,7 @@ async def generate_profile(
     profile_file: UploadFile = File(...)
 ):
     settings = Settings()
+    params = adjust_params(params)
     template_dir = settings.TEMPLATE_PATH / params.version
     assets_dir = settings.ASSETS_PATH / "persist"
     
