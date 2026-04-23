@@ -51,7 +51,11 @@ async def generate_profile(
     assets_dir = settings.ASSETS_PATH / "persist"
     
     # 1. Prepare Base Assets
-    bg_b64 = get_base64_image(assets_dir / "cmu-tartan-wave-red-crop-01.png")
+    if params.version == "v1":
+        bg_b64 = get_base64_image(assets_dir / "cmu-tartan-wave-red-crop-01.png")
+    else:
+        bg_b64 = get_base64_image(assets_dir / "cmu-tartan-wave-full-color-crop-02")
+
     seal_b64 = get_base64_image(assets_dir / "cmu-seal-w.png")
 
     # 2. Process the Uploaded File
