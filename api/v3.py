@@ -53,8 +53,11 @@ async def generate_profile(
     # 1. Prepare Base Assets
     if params.version == "v1":
         bg_b64 = get_base64_image(assets_dir / "cmu-tartan-wave-red-crop-01.png")
-    else:
+    elif params.version == "v2":
         bg_b64 = get_base64_image(assets_dir / "cmu-tartan-wave-full-color-crop-02")
+    else:
+        # fallback to v1 background if an unknown version is specified
+        bg_b64 = get_base64_image(assets_dir / "cmu-tartan-wave-red-crop-01.png") # Fallback to v1 background
 
     seal_b64 = get_base64_image(assets_dir / "cmu-seal-w.png")
 
