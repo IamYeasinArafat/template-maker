@@ -6,7 +6,6 @@ from fastapi import APIRouter, File, Query, Response, UploadFile
 from jinja2 import Template
 from playwright.async_api import async_playwright
 from pydantic import BaseModel
-import httpx
 
 from core.config import Settings
 
@@ -19,6 +18,7 @@ class QueryParams(BaseModel):
     handle: str
     profile_image_url: str = "" 
     version: str = "v1"
+    bg_version: str = "red"
 
 def get_base64_image(image_path: Path) -> str:
     """Helper to convert local assets to Base64 strings for the browser."""
@@ -51,9 +51,9 @@ async def generate_profile(
     assets_dir = settings.ASSETS_PATH / "persist"
     
     # 1. Prepare Base Assets
-    if params.version == "v1":
+    if params.bg_version == "red":
         bg_b64 = get_base64_image(assets_dir / "cmu-tartan-wave-red-crop-01.png")
-    elif params.version == "v2":
+    elif params.bg_version == "blue":
         bg_b64 = get_base64_image(assets_dir / "cmu-tartan-wave-full-color-crop-02")
     else:
         # fallback to v1 background if an unknown version is specified
